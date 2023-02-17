@@ -10,7 +10,10 @@ function DrawItem({ draw, showCloseButton }) {
         {new Date(draw.drawDateTime).toDateString()}
       </div>
       <div className="draw-datetime time">
-        {new Date(draw.drawDateTime).toLocaleTimeString()}
+        {new Date(draw.drawDateTime).toLocaleTimeString(navigator.language, {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
       </div>
       {draw.drawData.map((dr, index) => {
         return (
