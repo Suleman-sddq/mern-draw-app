@@ -31,12 +31,7 @@ function DrawList() {
         {draw.length > 0 ? (
           <div className="draws">
             {draw.map((dr) => (
-              <DrawItem
-                key={dr._id}
-                draw={dr}
-                showDrawType={true}
-                showCloseButton={true}
-              />
+              <DrawItem key={dr._id} draw={dr} showCloseButton={true} />
             ))}
           </div>
         ) : (

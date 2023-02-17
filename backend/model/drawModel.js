@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 
+
+
 const drawSchema = mongoose.Schema(
    {
       drawDateTime: {
@@ -8,13 +10,9 @@ const drawSchema = mongoose.Schema(
          unique: true,
          required: [true, 'Please add draw date and time']
       },
-      fareDraw: {
-         type: String,
-         required: [true, "Please select draw mode."]
-      },
-
-      drawWinnerNum: {
-         type: String,
+      drawData: {
+         type: Array,
+         required: true
       },
       drawStatus: {
          type: String,

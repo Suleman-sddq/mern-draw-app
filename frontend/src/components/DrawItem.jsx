@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteDraw } from "../features/draw/drawSlice";
 
-function DrawItem({ draw, showDrawType, showCloseButton }) {
+function DrawItem({ draw, showCloseButton }) {
   const dispatch = useDispatch();
 
   return (
@@ -10,18 +10,20 @@ function DrawItem({ draw, showDrawType, showCloseButton }) {
         {new Date(draw.drawDateTime).toDateString()}
       </div>
       <div className="draw-datetime time">
-        {new Date(draw.drawDateTime)
-          .toLocaleTimeString()
-          .replace(/^[^:]*([0-2]\d:[0-5]\d).*$/, "$1")}
+        {new Date(draw.drawDateTime).toLocaleTimeString()}
       </div>
-      <div className="draw-winner-number">{draw.drawWinnerNum}</div>
-      {showDrawType && (
-        <div className="draw-type">
-          {draw.fareDraw === "true" ? "Fare Draw" : "Not Fare Draw"}
-        </div>
-      )}
+      {draw.drawData.map((dr, index) => {
+        return (
+          <div key={index} className="draw-winner-number">
+            {" "}
+            {`${dr.position}: ${dr.winnerNumber}`}
+          </div>
+        );
+      })}
+
       {showCloseButton && (
         <button
+          key={draw._id}
           className="close"
           onClick={() => dispatch(deleteDraw(draw._id))}
         >

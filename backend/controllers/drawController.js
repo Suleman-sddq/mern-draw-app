@@ -53,8 +53,7 @@ const addDraw = asyncHandler(async (req, res) => {
    try {
       const draw = await Draw.create({
          drawDateTime: req.body.drawDateTime,
-         drawWinnerNum: req.body.drawWinnerNum,
-         fareDraw: req.body.fareDraw
+         drawData: req.body.drawData,
       })
       res.status(200).json(draw);
    } catch (error) {

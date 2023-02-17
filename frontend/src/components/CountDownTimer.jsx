@@ -18,7 +18,7 @@ function CountDownTimer({ countDownTimestampMs, id }) {
   const { draw, announceWinner } = useSelector((state) => state.draw);
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 
-  // Check if the countdown time is zero || reached to an end
+  // Check if the countdown time is zero || reached to an end and change the draw status to not-pending
   const timerOver = (countDown) => {
     const nowDayjs = dayjs();
     if (nowDayjs.isSame(countDown) || nowDayjs.isAfter(countDown)) {
@@ -27,7 +27,7 @@ function CountDownTimer({ countDownTimestampMs, id }) {
       setTimeout(() => {
         reset();
         dispatch(getCurrentDraw());
-      }, 5000);
+      }, 20000);
       console.log("announce" + data.id);
     }
   };

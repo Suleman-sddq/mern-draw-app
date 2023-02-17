@@ -14,13 +14,34 @@ const DrawForm = () => {
   const navigate = useNavigate();
 
   const [date, setDate] = useState("");
-  const [drawMode, setDrawMode] = useState();
-  const [drawNum, setDrawNum] = useState("");
 
-  const { isSuccess, isLoading, isError, draw, message } = useSelector(
-    (state) => state.draw
-  );
+  const [drawData, setDrawData] = useState([
+    { position: "", winnerNumber: "" },
+  ]);
+
+  // Handle input data
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const data = [...drawData];
+    data[index][name] = value;
+    setDrawData(data);
+  };
+
+  // Add more fields
+  const handleAdd = () => {
+    setDrawData([...drawData, { position: "", winnerNumber: "" }]);
+  };
+  // Remove a field
+  const handleRemove = (i) => {
+    const data = [...drawData];
+    data.splice(i, 1);
+    setDrawData(data);
+  };
+
+  const { isSuccess, isError, message } = useSelector((state) => state.draw);
   const { user, showLogin } = useSelector((state) => state.auth);
+
+  const { position, winnerNumber } = drawData;
 
   useEffect(() => {
     if (!user) {
@@ -31,36 +52,28 @@ const DrawForm = () => {
     }
 
     if (isSuccess) {
-      setDrawNum("");
       setDate("");
-      setDrawMode("true");
       // navigate("/");
     }
 
     // dispatch(reset());
-  }, [isError, isSuccess, message, navigate, dispatch]);
+  }, [isError, isSuccess, message, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(drawNum);
-    // console.log(date);
-
-    const drawDate = {
+    const data = {
       drawDateTime: date,
-      drawWinnerNum: drawNum,
-      fareDraw: drawMode,
+      drawData,
     };
-    if (drawNum && date && drawMode) {
-      dispatch(addDraw(drawDate));
-      setDrawNum("");
-      setDate("");
-      setDrawMode("true");
+
+    if (date) {
+      dispatch(addDraw(data));
+      setDrawData([{ position: "", winnerNumber: "" }]);
+    } else {
+      console.log(data);
     }
   };
 
-  const handleChange = (e) => {
-    setDrawNum(e.target.value);
-  };
   if (!user) {
     return <Dashboard />;
   }
@@ -69,61 +82,74 @@ const DrawForm = () => {
       <h1>DrawForm</h1>
       <section className="form">
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <div className="form-group-radio">
-              <label htmlFor="fareDraw">Fare Draw</label>
-              <div className="form-control-radio">
-                <input
-                  className="form-radio"
-                  type="radio"
-                  name="fareDraw"
-                  id="fareDraw"
-                  value="true"
-                  selected
-                  required
-                  onChange={(e) => setDrawMode(e.target.value)}
-                />
-                <div>Yes</div>
-              </div>
-              <div className="form-control-radio">
-                <input
-                  className="form-radio"
-                  type="radio"
-                  name="fareDraw"
-                  id="fareDraw"
-                  value="false"
-                  onChange={(e) => setDrawMode(e.target.value)}
-                />{" "}
-                <div>No</div>
-              </div>
-            </div>
-            <DatePicker
-              className="form-control"
-              selected={date}
-              onChange={(date) => setDate(date)}
-              showTimeSelect
-              timeIntervals={10}
-              minDate={new Date()}
-              dateFormat="MMMM d, yyyy h:mm aa"
-              placeholderText="Select Date and Time"
-              required
-            />
-            <div className="form-group">
-              <input
-                className="form-control"
-                name="drawNum"
-                type="text"
-                id="drawNum"
-                value={drawNum}
-                onChange={handleChange}
-                placeholder="Enter Draw Number (4 to 8 Characters only)"
-                required
-                minLength="4"
-                maxLength="8"
+          <div className="form-group form-date-time">
+            <label htmlFor="fareDraw">Draw Date and Time :</label>
+            <div className="form-control">
+              <DatePicker
+                selected={date}
+                onChange={(date) => setDate(date)}
+                showTimeSelect
+                timeIntervals={1}
+                minDate={new Date()}
+                dateFormat="MMMM d, yyyy h:mm aa"
+                placeholderText=""
+                // requireds
               />
             </div>
           </div>
-          <button type="submit" className="btn">
+          <div className="form-group">
+            <ul>
+              {drawData.map((data, i) => {
+                return (
+                  <li key={i}>
+                    <div className="form-draw">
+                      <label htmlFor="fareDraw">Position:</label>
+
+                      <div className="form-control-title">
+                        <input
+                          name="position"
+                          type="text"
+                          id="position"
+                          value={data.position}
+                          onChange={(e) => handleChange(e, i)}
+                          placeholder=""
+                          required
+                          maxLength="3"
+                        />
+                      </div>
+                      <label htmlFor="fareDraw">Number:</label>
+                      <div className="form-control">
+                        <input
+                          name="winnerNumber"
+                          type="text"
+                          id="winnerNumber"
+                          value={data.winnerNumber}
+                          onChange={(e) => handleChange(e, i)}
+                          placeholder=""
+                          required
+                          minLength="4"
+                          maxLength="8"
+                        />
+                      </div>
+                      {drawData.length > 1 && (
+                        <button
+                          onClick={(i) => handleRemove(i)}
+                          className="btn btn-remove"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <button onClick={handleAdd} className="btn add-btn">
+            Add More
+          </button>
+
+          <button type="submit" className="btn form-btn">
             Submit
           </button>
         </form>

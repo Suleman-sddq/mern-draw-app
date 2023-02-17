@@ -9,9 +9,8 @@ import WinnersList from "../components/WinnersList";
 function Dashboard() {
   const dispatch = useDispatch();
 
-  const { draw, isLoading, isSuccess, drawStatus } = useSelector(
-    (state) => state.draw
-  );
+  const { draw, isLoading, isSuccess, drawStatus, announceWinner } =
+    useSelector((state) => state.draw);
 
   useEffect(() => {
     dispatch(getCurrentDraw());
@@ -24,11 +23,15 @@ function Dashboard() {
     <>
       {isSuccess && draw.length !== 0 ? (
         <>
-          <CountDownTimer
-            id={draw[0]._id}
-            countDownTimestampMs={draw[0].drawDateTime}
-          />
-          <DrawContainer luckyNumber={draw[0].drawWinnerNum} />
+          {!announceWinner && (
+            <CountDownTimer
+              id={draw[0]._id}
+              countDownTimestampMs={draw[0].drawDateTime}
+            />
+          )}
+          {announceWinner && (
+            <DrawContainer luckywinnersArray={draw[0].drawData} />
+          )}
         </>
       ) : (
         <h1>Please wait for next draw.</h1>
