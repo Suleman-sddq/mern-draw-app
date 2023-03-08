@@ -18,12 +18,24 @@ function Header() {
   const handleClick = () => {
     navigate("/drawForm");
   };
+
+  const handlePreviousWinnwer = () => {
+    navigate("/previousWinners");
+  };
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">Lucky Draw</Link>
+        <Link className="logo" to="/">
+          Lucky Draw
+        </Link>
       </div>
       <ul>
+        <li>
+          <button className="btn" onClick={handlePreviousWinnwer}>
+            <FaUser />
+            Previous winners
+          </button>
+        </li>
         {user ? (
           <Fragment>
             <li>

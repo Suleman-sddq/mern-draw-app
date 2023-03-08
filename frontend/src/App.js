@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import DrawForm from "./pages/DrawForm";
+import LastWinners from "./pages/LastWinners";
 import { ToastContainer } from "react-toastify";
 import { useMultipleKeyPress } from "./components/utils/useMultipleKeyPress";
 import { useDispatch } from "react-redux";
@@ -25,16 +26,19 @@ function App() {
   };
   useMultipleKeyPress(handler, ["k", "p", "l"]);
   return (
-    <div className="container">
+    <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/DrawForm" element={<DrawForm />} />
-      </Routes>
-      <ToastContainer />
-    </div>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/DrawForm" element={<DrawForm />} />
+          <Route path="/previousWinners" element={<LastWinners />} />
+        </Routes>
+        <ToastContainer />
+      </div>
+    </>
   );
 }
 

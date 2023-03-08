@@ -34,10 +34,8 @@ function Dashboard() {
           )}
         </>
       ) : (
-        <h1>Please wait for next draw.</h1>
+        <div className="heading">Please wait for next draw.</div>
       )}
-
-      <WinnersList />
     </>
   );
 }

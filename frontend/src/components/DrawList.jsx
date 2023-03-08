@@ -26,7 +26,7 @@ function DrawList() {
   }
   return (
     <div>
-      <h1 className="pending-draws">Pending Draws</h1>
+      <h1 className="heading">Pending Draws</h1>
       <section className="content">
         {draw.length > 0 ? (
           <div className="draws">

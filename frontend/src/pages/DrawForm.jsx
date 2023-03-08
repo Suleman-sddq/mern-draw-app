@@ -79,7 +79,7 @@ const DrawForm = () => {
   }
   return (
     <Fragment>
-      <h1>DrawForm</h1>
+      <div className="heading">DrawForm</div>
       <section className="form">
         <form onSubmit={handleSubmit}>
           <div className="form-group form-date-time">

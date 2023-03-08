@@ -50,7 +50,7 @@ function CountDownTimer({ countDownTimestampMs, id }) {
   };
   return (
     <div className="timer-container">
-      <h1>Next draw in</h1>
+      <h1 className="heading">Next draw in</h1>
       <div className="timer">
         <div className="clock">
           <section>
