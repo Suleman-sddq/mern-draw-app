@@ -401,7 +401,7 @@ label {
 
   .clock p,
   .clock > span {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     margin: 0 15px;
   }
 }
