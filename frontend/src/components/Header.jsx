@@ -26,7 +26,7 @@ function Header() {
     <header className="header">
       <div className="logo">
         <Link className="logo" to="/">
-          Lucky Draw
+          Lucky 3 Pick
         </Link>
       </div>
       <ul>

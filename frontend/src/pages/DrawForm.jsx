@@ -127,7 +127,7 @@ const DrawForm = () => {
                           onChange={(e) => handleChange(e, i)}
                           placeholder=""
                           required
-                          minLength="4"
+                          minLength="3"
                           maxLength="8"
                         />
                       </div>

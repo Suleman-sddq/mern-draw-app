@@ -279,20 +279,6 @@ label {
   }
 }
 
-@media (max-width: 600px) {
-  .form {
-    width: 90%;
-  }
-
-  .heading h1 {
-    font-size: 2rem;
-  }
-
-  .heading p {
-    font-size: 1.5rem;
-  }
-}
-
 /* Timer styles */
 
 .timer {
@@ -398,4 +384,26 @@ label {
   font-size: 1.5rem;
   font-weight: 600;
   color: #e6e6e6;
+}
+
+/* Media queries */
+
+@media (max-width: 600px) {
+  .form {
+    width: 90%;
+  }
+
+  .heading h1 {
+    font-size: 2rem;
+  }
+
+  .heading p {
+    font-size: 1.5rem;
+  }
+
+  .clock p,
+  .clock > span {
+    font-size: 2.5rem;
+    margin: 0 15px;
+  }
 }
