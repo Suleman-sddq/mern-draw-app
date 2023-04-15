@@ -74,16 +74,12 @@ h3 {
 }
 
 .header ul li {
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 .header ul li a {
   display: flex;
   align-items: center;
-}
-
-.header ul li a:hover {
-  color: #777;
 }
 
 .header ul li a svg {
@@ -191,6 +187,9 @@ label {
   text-align: left;
   width: max-content;
   margin: 0 10px 5px 3px;
+}
+.btn > a {
+  color: #fff;
 }
 
 .btn {
@@ -327,7 +326,8 @@ label {
   margin: 0 5px;
   font-size: 2rem;
   font-weight: 600;
-  border: 2px solid gray;
+  border: 2px solid #fff;
+  color: #fff;
   border-radius: 5px;
   /* padding: 0 15px; */
   width: 3.5rem;
@@ -337,6 +337,7 @@ label {
   margin-top: 1rem;
   font-size: 2rem;
   font-weight: bolder;
+  color: #fff;
 }
 
 .numOfDraws {
@@ -360,7 +361,11 @@ label {
   margin-top: 1rem;
 }
 .pending-draws-message {
-  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  color: #f9f8fb;
 }
 .draw-type {
   font-weight: 600;
@@ -386,6 +391,16 @@ label {
   color: #e6e6e6;
 }
 
+.clock-digi span {
+  padding: 0px 5px;
+  border: 2px solid #24243e;
+  border-radius: 5px;
+  color: #24243e !important;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
   .form {
     width: 90%;
@@ -403,5 +418,23 @@ label {
   .clock > span {
     font-size: 1.7rem;
     margin: 0 15px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .clock-digi > span {
+    padding: 0px 5px;
+    border: 2px solid #24243e;
+    border-radius: 5px !important;
+    color: #24243e !important;
+    font-size: 10px;
+    font-weight: 400;
+    cursor: pointer;
   }
 }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { Fragment } from "react";
+import Clock from "react-digital-clock";
 
 function Header() {
   const dispatch = useDispatch();
@@ -32,7 +33,6 @@ function Header() {
       <ul>
         <li>
           <button className="btn" onClick={handlePreviousWinnwer}>
-            <FaUser />
             Previous winners
           </button>
         </li>
@@ -45,7 +45,7 @@ function Header() {
               </button>
             </li>
             <li>
-              <button className="btn " onClick={handleClick}>
+              <button className="btn" onClick={handleClick}>
                 Go To Form
               </button>
             </li>
@@ -54,12 +54,15 @@ function Header() {
           <>
             <li>
               {showLogin && (
-                <Link to="/login">
-                  <FaSignInAlt />
-                  Login
-                </Link>
+                <button className="btn">
+                  <Link to="/login">
+                    <FaSignInAlt />
+                    Login
+                  </Link>
+                </button>
               )}
             </li>
+
             {/* <li>
               <Link to="/Register">
                 <FaUser />
@@ -68,6 +71,11 @@ function Header() {
             </li> */}
           </>
         )}
+        <li>
+          <div className="clock-digi">
+            <Clock format={"hh-mm"} />
+          </div>
+        </li>
       </ul>
     </header>
   );

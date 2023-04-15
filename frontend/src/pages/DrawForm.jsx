@@ -90,7 +90,7 @@ const DrawForm = () => {
                 onChange={(date) => setDate(date)}
                 showTimeSelect
                 timeIntervals={1}
-                minDate={new Date()}
+                // minDate={new Date()}
                 dateFormat="MMMM d, yyyy h:mm aa"
                 placeholderText=""
                 // requireds
@@ -121,7 +121,7 @@ const DrawForm = () => {
                       <div className="form-control">
                         <input
                           name="winnerNumber"
-                          type="text"
+                          type="number"
                           id="winnerNumber"
                           value={data.winnerNumber}
                           onChange={(e) => handleChange(e, i)}
