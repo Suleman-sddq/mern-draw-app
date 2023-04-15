@@ -386,8 +386,6 @@ label {
   color: #e6e6e6;
 }
 
-/* Media queries */
-
 @media (max-width: 600px) {
   .form {
     width: 90%;
