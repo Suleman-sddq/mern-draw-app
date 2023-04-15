@@ -19,10 +19,10 @@ const DrawContainer = ({ luckywinnersArray }) => {
         }, 5000 * i);
       });
 
-      console.log(luckywinnersArray);
+      // console.log(luckywinnersArray);
     }
 
-    console.log(winNum);
+    // console.log(winNum);
   }, [setPosition, setWinNum]);
 
   if (announceWinner && !isLoading) {

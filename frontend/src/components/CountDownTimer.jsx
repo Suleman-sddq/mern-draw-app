@@ -28,7 +28,7 @@ function CountDownTimer({ countDownTimestampMs, id }) {
         reset();
         dispatch(getCurrentDraw());
       }, 20000);
-      console.log("announce" + data.id);
+      // console.log("announce" + data.id);
     }
   };
 
