@@ -439,4 +439,12 @@ label {
     font-weight: 400;
     cursor: pointer;
   }
+  .drawContainer {
+    margin-top: 1rem;
+    height: auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
 }
