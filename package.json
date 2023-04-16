@@ -21,7 +21,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
-    "react-digital-clock": "^0.1.2"
+    "react-digital-clock": "^0.1.2",
+    "react-odometerjs": "^3.1.0"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
