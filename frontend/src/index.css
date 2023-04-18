@@ -6,10 +6,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  height: 100%;
+}
 
 body {
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
   background: #c04848; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -21,6 +22,11 @@ body {
     #480048,
     #c04848
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 6.7rem;
 }
 
 a {
@@ -260,11 +266,18 @@ label {
   display: block;
 }
 
+/* .loadingSpinner {
+  width: 10px;
+  height: 10px;
+  margin: 40px auto;
+  border-radius: 50%;
+  background: #fff;
+} */
 .loadingSpinner {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #000 transparent #555 transparent;
+  border-color: #fff transparent #fff transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
@@ -393,15 +406,71 @@ label {
   color: #e6e6e6;
 }
 
-.clock-digi span {
+.clock-digi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 0px 5px;
   border: 2px solid #24243e;
   border-radius: 5px;
   color: #24243e !important;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
+  width: 95px;
+  height: 30px;
 }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #101f41;
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  font-weight: 100;
+}
+
+.footer-icon {
+  margin-right: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+.footer-div > div > p {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.copy-right {
+  font-size: 13px;
+  font-weight: 500;
+}
+/* .adress {
+  width: 300px;
+  text-align: left;
+} */
+/* Oddometer animation duration increase */
+
+.odometer.odometer-animating-up .odometer-ribbon-inner,
+.odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  -webkit-transition-duration: 10s !important;
+  -moz-transition-duration: 10s !important;
+  -ms-transition-duration: 10s !important;
+  -o-transition-duration: 10s !important;
+  transition-duration: 10s !important;
+}
+
+/* Hide oddometer first digit to manage to display zeros
+.odometer-inside > .odometer-digit:nth-last-child(4) {
+  display: none;
+} */
 
 @media (max-width: 600px) {
   .form {
@@ -424,24 +493,32 @@ label {
 
   .logo {
     font-size: 1rem;
+    font-weight: 600;
   }
 
   .btn {
     font-size: 12px;
     font-weight: 400;
   }
-  .clock-digi > span {
+  .clock-digi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     padding: 0px 5px;
     border: 2px solid #24243e;
-    border-radius: 5px !important;
+    border-radius: 5px;
     color: #24243e !important;
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
+    width: 95px;
+    height: 43px;
   }
+
   .drawContainer {
     margin-top: 1rem;
-    height: auto;
+    height: 300px;
     display: flex;
     text-align: center;
     justify-content: center;

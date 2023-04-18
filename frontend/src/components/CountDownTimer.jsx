@@ -21,6 +21,7 @@ function CountDownTimer({ countDownTimestampMs, id }) {
   // Check if the countdown time is zero || reached to an end and change the draw status to not-pending
   const timerOver = (countDown) => {
     const nowDayjs = dayjs();
+
     if (nowDayjs.isSame(countDown) || nowDayjs.isAfter(countDown)) {
       const data = { id: id, drawStatus: "not-pending" };
       dispatch(announceWinnerFun(data));
@@ -28,7 +29,6 @@ function CountDownTimer({ countDownTimestampMs, id }) {
         reset();
         dispatch(getCurrentDraw());
       }, 20000);
-      // console.log("announce" + data.id);
     }
   };
 
@@ -36,6 +36,8 @@ function CountDownTimer({ countDownTimestampMs, id }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       updateRemainingTime(countDownTimestampMs);
+      // console.log(countDownTimestampMs);
+      // console.log(new Date(countDownTimestampMs).getTime() / 1000 - 3);
     }, 1000);
     if (!announceWinner) {
       timerOver(countDownTimestampMs);
@@ -49,32 +51,36 @@ function CountDownTimer({ countDownTimestampMs, id }) {
     setRemainingTime(getRemainingTimeUntilMsTimestamp(countDown));
   };
   return (
-    <div className="timer-container">
-      <h1 className="heading">Next draw in</h1>
-      <div className="timer">
-        <div className="clock">
-          <section>
-            <p>{remainingTime.days}</p>
-            <span>Days</span>
-          </section>
-          <span>:</span>
-          <section>
-            <p className="two-Numbers">{remainingTime.hours}</p>
-            <span>Hours</span>
-          </section>
-          <span>:</span>
-          <section>
-            <p className="two-Numbers">{remainingTime.minutes}</p>
-            <span>Minutes</span>
-          </section>
-          <span>:</span>
-          <section>
-            <p className="two-Numbers">{remainingTime.seconds}</p>
-            <span>Seconds</span>
-          </section>
+    <>
+      {remainingTime && (
+        <div>
+          <h1 className="heading">Next draw in</h1>
+          <div className="timer">
+            <div className="clock">
+              <section>
+                <p>{remainingTime.days}</p>
+                <span>Days</span>
+              </section>
+              <span>:</span>
+              <section>
+                <p className="two-Numbers">{remainingTime.hours}</p>
+                <span>Hours</span>
+              </section>
+              <span>:</span>
+              <section>
+                <p className="two-Numbers">{remainingTime.minutes}</p>
+                <span>Minutes</span>
+              </section>
+              <span>:</span>
+              <section>
+                <p className="two-Numbers">{remainingTime.seconds}</p>
+                <span>Seconds</span>
+              </section>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

@@ -4,14 +4,14 @@ export const getRemainingTimeUntilMsTimestamp = (timestampMs) => {
 
    const timestampDayjs = dayjs(timestampMs);
    const nowDayjs = dayjs();
-
+   // console.log(nowDayjs);
    if (timestampDayjs.isSame(nowDayjs)) {
 
       return {
          seconds: "00",
          minutes: "00",
          hours: "00",
-         days: "00",
+         days: "0",
       }
 
    }
@@ -20,7 +20,7 @@ export const getRemainingTimeUntilMsTimestamp = (timestampMs) => {
          seconds: "00",
          minutes: "00",
          hours: "00",
-         days: "00",
+         days: "0",
       }
    }
    return {

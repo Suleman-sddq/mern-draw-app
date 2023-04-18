@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { Fragment } from "react";
-import Clock from "react-digital-clock";
+import Clock from "react-live-clock";
 
 function Header() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function Header() {
     <header className="header">
       <div className="logo">
         <Link className="logo" to="/">
-          Lucky 3 Pick
+          Super Lucky 3 Pick
         </Link>
       </div>
       <ul>
@@ -73,7 +73,11 @@ function Header() {
         )}
         <li>
           <div className="clock-digi">
-            <Clock format={"hh-mm"} />
+            <Clock
+              format={"HH:mm:ss"}
+              ticking={true}
+              timezone={"Europe/Belfast"}
+            />
           </div>
         </li>
       </ul>

@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { activateLogin, deActivateLogin } from "./features/auth/authSlice";
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [toggleLogin, setToggleLogin] = useState(true);
@@ -38,6 +39,7 @@ function App() {
         </Routes>
         <ToastContainer />
       </div>
+      <Footer />
     </>
   );
 }

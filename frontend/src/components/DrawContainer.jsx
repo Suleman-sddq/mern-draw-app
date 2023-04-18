@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import DrawNumber from "./DrawNumber";
 import { useDispatch, useSelector } from "react-redux";
 import Odometer from "react-odometerjs";
+import { motion, AnimatePresence } from "framer-motion";
 
 const DrawContainer = ({ luckywinnersArray }) => {
   const { isLoading, isSuccess, announceWinner } = useSelector(
@@ -17,32 +18,25 @@ const DrawContainer = ({ luckywinnersArray }) => {
         setTimeout(() => {
           setPosition(element.position);
           setWinNum(element.winnerNumber);
-          // console.log(winNum);
         }, 5000 * i);
       });
-
-      // console.log(luckywinnersArray);
     }
-
-    // console.log(winNum);
   }, [setPosition, setWinNum]);
 
-  // if (announceWinner && !isLoading) {
-  return (
-    <>
-      <div className="draw-position">{position}</div>
-      <div className="drawContainer">
-        <Odometer value={winNum} format="" duration={5000} />
-        {/* {winNum.split("").map((num, index) => (
-            <>
-              <DrawNumber key={index} number={num} position={position} />
-             
-            </>
-          ))} */}
-      </div>
-    </>
-  );
-  // }
+  if (announceWinner && !isLoading) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      >
+        <div className="draw-position">{position}</div>
+        <div className="drawContainer">
+          <Odometer value={winNum} format="" duration={5000} />
+        </div>
+      </motion.div>
+    );
+  }
 };
 
 export default DrawContainer;
