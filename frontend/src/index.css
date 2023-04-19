@@ -452,10 +452,7 @@ label {
   font-size: 13px;
   font-weight: 500;
 }
-/* .adress {
-  width: 300px;
-  text-align: left;
-} */
+
 /* Oddometer animation duration increase */
 
 .odometer.odometer-animating-up .odometer-ribbon-inner,
@@ -492,13 +489,16 @@ label {
   }
 
   .logo {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    text-align: center;
   }
 
   .btn {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 400;
+    width: 70px;
+    height: 43px;
   }
   .clock-digi {
     display: flex;
@@ -523,5 +523,9 @@ label {
     text-align: center;
     justify-content: center;
     font-size: 3rem;
+  }
+  .adress {
+    width: 300px;
+    text-align: center;
   }
 }
