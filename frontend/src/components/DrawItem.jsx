@@ -18,7 +18,6 @@ function DrawItem({ draw, showCloseButton }) {
       {draw.drawData.map((dr, index) => {
         return (
           <div key={index} className="draw-winner-number">
-            {" "}
             {`${dr.position}: ${dr.winnerNumber}`}
           </div>
         );

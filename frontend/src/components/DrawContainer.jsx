@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import DrawNumber from "./DrawNumber";
 import { useDispatch, useSelector } from "react-redux";
 import Odometer from "react-odometerjs";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,7 +9,6 @@ const DrawContainer = ({ luckywinnersArray }) => {
   );
   const [winNum, setWinNum] = useState("");
   const [position, setPosition] = useState("");
-  // const winnersArray = luckywinnersArray.map((arr) => arr.winnerNumber);
   const charArray = [];
   useEffect(() => {
     if (luckywinnersArray.length > 0) {
