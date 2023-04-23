@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { deleteDraw } from "../features/draw/drawSlice";
+import Clock from "react-live-clock";
 
 function DrawItem({ draw, showCloseButton }) {
   const dispatch = useDispatch();
@@ -10,10 +11,16 @@ function DrawItem({ draw, showCloseButton }) {
         {new Date(draw.drawDateTime).toDateString()}
       </div>
       <div className="draw-datetime time">
-        {new Date(draw.drawDateTime).toLocaleTimeString(navigator.language, {
+        {/* {new Date(draw.drawDateTime).toLocaleTimeString(navigator.language, {
           hour: "2-digit",
           minute: "2-digit",
-        })}
+        })} */}
+        <Clock
+          date={draw.drawDateTime}
+          format={"HH:mm"}
+          ticking={true}
+          timezone={"Europe/Belfast"}
+        />
       </div>
       {draw.drawData.map((dr, index) => {
         return (

@@ -93,7 +93,7 @@ const DrawForm = () => {
                 // minDate={new Date()}
                 dateFormat="MMMM d, yyyy h:mm aa"
                 placeholderText=""
-                // requireds
+                required
               />
             </div>
           </div>
@@ -114,7 +114,7 @@ const DrawForm = () => {
                           onChange={(e) => handleChange(e, i)}
                           placeholder=""
                           required
-                          maxLength="3"
+                          maxLength="5"
                         />
                       </div>
                       <label htmlFor="fareDraw">Number:</label>
